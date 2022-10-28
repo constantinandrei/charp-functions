@@ -77,5 +77,32 @@ Console.WriteLine(sommaElementiArray(givenArray));
 Console.WriteLine("Somma numeri elevati al quadrato: ");
 Console.WriteLine(sommaElementiArray(ElevaArrayAlQuadrato(givenArray)));
 
-//BONUS: Convertire le funzioni appena dichiarate in funzioni generiche, ossia funzioni che possono lavorare con array di numeri interi di lunghezza variabile, ossia debbono poter funzionare sia che gli passi array di 5 elementi, sia di 6, di 7, di ... e così via. A questo punto modificare il programma in modo che chieda all’utente quanti numeri voglia inserire, e dopo di che questi vengono inseriti a mano dall’utente esternamente.
+//BONUS: Convertire le funzioni appena dichiarate in funzioni generiche,
+//ossia funzioni che possono lavorare con array di numeri interi di lunghezza variabile,
+//ossia debbono poter funzionare sia che gli passi array di 5 elementi, sia di 6, di 7, di ... e così via.
+//A questo punto modificare il programma in modo che chieda all’utente quanti numeri voglia inserire,
+//e dopo di che questi vengono inseriti a mano dall’utente esternamente.
 //Rieseguire il programma con l’input preso esternamente dall’utente.
+Console.WriteLine();
+Console.WriteLine();
+
+
+Console.WriteLine("Quanti numeri deve contenere l'array?");
+int arrayLength = Convert.ToInt32(Console.ReadLine());
+
+int[] userArray = new int[arrayLength];
+
+for (int i = 0; i < userArray.Length; i++)
+{
+    Console.WriteLine($"Inserire il numero {i + 1} di {arrayLength}");
+    userArray[i] = Convert.ToInt32(Console.ReadLine());
+}
+Console.WriteLine();
+Console.WriteLine("Stampa array di numeri");
+StampaArray(userArray);
+Console.WriteLine("Stampa array di numeri al quadrato");
+StampaArray(ElevaArrayAlQuadrato(userArray));
+Console.WriteLine("Somma numeri: ");
+Console.WriteLine(sommaElementiArray(userArray));
+Console.WriteLine("Somma numeri elevati al quadrato: ");
+Console.WriteLine(sommaElementiArray(ElevaArrayAlQuadrato(userArray)));
