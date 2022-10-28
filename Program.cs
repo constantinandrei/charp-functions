@@ -131,6 +131,22 @@ Console.WriteLine("fattoriale con metodo interativo");
 Console.WriteLine(Fattoriale(3));
 Console.WriteLine();
 
+// Ricorsivo
+
+Console.WriteLine("fattoriale con metodo ricorsivo");
+
+int FattorialeRicorsivo(int numero)
+{
+    if (numero == 0)
+    {
+        return 1;
+    }
+
+    return numero * FattorialeRicorsivo(numero - 1);
+}
+
+
+Console.WriteLine(FattorialeRicorsivo(4));
 //Seguenza di Fibonacci
 
 // Interativo
