@@ -9,12 +9,12 @@ using System;
 //void StampaArray(int[] array): che preso un array di numeri interi, stampa a video il contenuto dell’array in questa forma “[elemento 1, elemento 2, elemento 3, ...]“.
 //Potete prendere quella fatta in classe questa mattina
 
-void StampaArray(int[] intArray)
+void StampaArray(int[] array)
 {
-    for (int i = 0; i < intArray.Length; i++)
+    for (int i = 0; i < array.Length; i++)
     {
-        Console.Write(intArray[i]);
-        if (i < intArray.Length - 1)
+        Console.Write(array[i]);
+        if (i < array.Length - 1)
             Console.Write(" - ");
         
     }
@@ -22,10 +22,26 @@ void StampaArray(int[] intArray)
     Console.WriteLine();
 }
 
-StampaArray(new int[] { 2, 5, 7});
-
 //int Quadrato(int numero): che vi restituisca il quadrato del numero passato come parametro.
-//int[] ElevaArrayAlQuadrato(int[] array): che preso un array di numeri interi, restituisca un nuovo array con tutti gli elementi elevati quadrato. Attenzione: è importante restituire un nuovo array, e non modificare l’array come parametro della funzione! Vi ricordate perchè? Pensateci (vedi slide)
+
+int Quadrato(int numero)
+{
+    return numero * numero;
+}
+
+//int[] ElevaArrayAlQuadrato(int[] array): che preso un array di numeri interi, restituisca un nuovo array con tutti gli elementi elevati quadrato.
+//Attenzione: è importante restituire un nuovo array, e non modificare l’array come parametro della funzione! Vi ricordate perchè? Pensateci (vedi slide)
+
+int[] ElevaArrayAlQuadrato(int[] array)
+{
+    int[] arrayToSquare = new int[array.Length];
+    for (int i = 0; i < array.Length; i++)
+        arrayToSquare[i] = Quadrato(array[i]);
+    return arrayToSquare;
+}
+
+
+
 //int sommaElementiArray(int[] array): che preso un array di numeri interi, restituisca la somma totale di tutti gli elementi dell’array.
 //Una volta completate queste funzioni di utilità di base, e dato il seguente array di numeri [2, 6, 7, 5, 3, 9] già dichiarato nel vostro codice, si vogliono utilizzare le funzioni per:
 //Stampare l’array di numeri fornito a video
