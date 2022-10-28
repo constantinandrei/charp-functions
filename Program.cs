@@ -40,13 +40,42 @@ int[] ElevaArrayAlQuadrato(int[] array)
     return arrayToSquare;
 }
 
-
-
 //int sommaElementiArray(int[] array): che preso un array di numeri interi, restituisca la somma totale di tutti gli elementi dell’array.
+
+int sommaElementiArray(int[] array)
+{
+    int somma = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        somma += array[i];
+    }
+
+    return somma;
+}
+
 //Una volta completate queste funzioni di utilità di base, e dato il seguente array di numeri [2, 6, 7, 5, 3, 9] già dichiarato nel vostro codice, si vogliono utilizzare le funzioni per:
+
+int[] givenArray = { 2, 6, 7, 5, 3, 9 };
+
 //Stampare l’array di numeri fornito a video
-//Stampare l’array di numeri fornito a video, dove ogni numero è stato prima elevato al quadrato (Verificare che l’array originale non sia stato modificato quindi ristampare nuovamente l’array originale e verificare che sia rimasto [2, 6, 7, 5, 3, 9])
+Console.WriteLine("Stampa array di numeri");
+StampaArray(givenArray);
+
+//Stampare l’array di numeri fornito a video, dove ogni numero è stato prima elevato al quadrato
+//(Verificare che l’array originale non sia stato modificato quindi ristampare nuovamente l’array originale e verificare che sia rimasto [2, 6, 7, 5, 3, 9])
+Console.WriteLine("Stampa array di numeri al quadrato");
+StampaArray(ElevaArrayAlQuadrato(givenArray));
+Console.WriteLine("Stampa array di numeri");
+StampaArray(givenArray);
+
 //Stampare la somma di tutti i numeri
+
+Console.WriteLine("Somma numeri: ");
+Console.WriteLine(sommaElementiArray(givenArray));
 //Stampare la somma di tutti i numeri elevati al quadrati
+
+Console.WriteLine("Somma numeri elevati al quadrato: ");
+Console.WriteLine(sommaElementiArray(ElevaArrayAlQuadrato(givenArray)));
+
 //BONUS: Convertire le funzioni appena dichiarate in funzioni generiche, ossia funzioni che possono lavorare con array di numeri interi di lunghezza variabile, ossia debbono poter funzionare sia che gli passi array di 5 elementi, sia di 6, di 7, di ... e così via. A questo punto modificare il programma in modo che chieda all’utente quanti numeri voglia inserire, e dopo di che questi vengono inseriti a mano dall’utente esternamente.
 //Rieseguire il programma con l’input preso esternamente dall’utente.
