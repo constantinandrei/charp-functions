@@ -110,62 +110,146 @@
 
 // Bonus 
 
-// Fattoriale di un numero
+//// Fattoriale di un numero
 
-// Iterativo
+//// Iterativo
 
-int Fattoriale(int numero)
+//int Fattoriale(int numero)
+//{
+//    if (numero < 0)
+//        return 0;
+//    int result = 1;
+//    for (int i = 1; i <= numero; i++)
+//    {
+//        result *= i;
+//    }
+//    return result;
+//}
+
+
+//Console.WriteLine("fattoriale con metodo interativo");
+//Console.WriteLine(Fattoriale(3));
+//Console.WriteLine();
+
+//// Ricorsivo
+
+//Console.WriteLine("fattoriale con metodo ricorsivo");
+
+//int FattorialeRicorsivo(int numero)
+//{
+//    if (numero == 0)
+//    {
+//        return 1;
+//    }
+
+//    return numero * FattorialeRicorsivo(numero - 1);
+//}
+
+
+//Console.WriteLine(FattorialeRicorsivo(4));
+
+//Console.WriteLine();
+////Seguenza di Fibonacci
+
+//// Interativo
+
+//int Fibonacci(int numero)
+//{
+//    if (numero == 0)
+//        return numero;
+//    int fibonacciFirst = 0;
+//    int fibonacciSecond = 1;
+//    for (int i = 0; i < numero - 1; i++)
+//    {
+//        int temporalStore = fibonacciSecond;
+//        fibonacciSecond = fibonacciFirst + fibonacciSecond;
+//        fibonacciFirst = temporalStore;
+//    }
+
+//    return fibonacciSecond;
+//}
+
+//Console.WriteLine("Fibonacci iterativo");
+//Console.WriteLine(Fibonacci(10));
+
+//Console.WriteLine();
+
+// Cifrario di Cesare
+
+string Crypting(string phrase, int key)
 {
-    if (numero < 0)
-        return 0;
-    int result = 1;
-    for (int i = 1; i <= numero; i++)
+    // declare the alphabet
+    string alphabeth = "abcdefghijklmnopkrstuvwxyz";
+
+    // declare the variable used to store the final cripted message
+    string cripted = "";
+
+    // loop throught the messahe
+    for (int i = 0; i < phrase.Length; i++)
     {
-        result *= i;
+
+        // the space will not be considered
+        if (phrase[i].Equals(" "))
+            continue;
+        else
+        {
+            // find the position of the char in the alphabet
+            int charIndex = alphabeth.IndexOf(phrase[i]);
+
+            // replace in the new message with the crypted position
+            // using modulo of the exact length of the alphabet to start from zero if the char is in the final positions
+            cripted += alphabeth[(charIndex + key) % alphabeth.Length];
+
+        }
     }
-    return result;
+
+    return cripted;
 }
 
-
-Console.WriteLine("fattoriale con metodo interativo");
-Console.WriteLine(Fattoriale(3));
-Console.WriteLine();
-
-// Ricorsivo
-
-Console.WriteLine("fattoriale con metodo ricorsivo");
-
-int FattorialeRicorsivo(int numero)
+string Decrypting(string phrase, int key)
 {
-    if (numero == 0)
+    // declare the alphabet
+    string alphabeth = "abcdefghijklmnopkrstuvwxyz";
+
+    // declare the variable used to store the final cripted message
+    string decripted = "";
+
+    // loop throught the messahe
+    for (int i = 0; i < phrase.Length; i++)
     {
-        return 1;
+
+        // the space will not be considered
+        if (phrase[i].Equals(" "))
+            continue;
+        else
+        {
+            // find the position of the char in the alphabet
+            int charIndex = alphabeth.IndexOf(phrase[i]);
+            // replace in the new message with the crypted position
+            int newPosition = charIndex - key;
+            // if negative position of new charIndex then sutract from the alphabeth length to get the right value
+            if (newPosition < 0)
+                newPosition = alphabeth.Length + newPosition;
+            decripted += alphabeth[newPosition];
+
+        }
     }
 
-    return numero * FattorialeRicorsivo(numero - 1);
+    return decripted;
 }
 
+// ask to user if decript or encript
 
-Console.WriteLine(FattorialeRicorsivo(4));
-//Seguenza di Fibonacci
+Console.WriteLine("Per criptare una frase inserire la lettera c, per decriptare inserire la lettera d (c / d)");
+string userChoise = Console.ReadLine();
+// ask the message
+Console.WriteLine("Inserire il messaggio");
+string message = Console.ReadLine();
 
-// Interativo
-
-int Fibonacci(int numero)
-{
-    if (numero == 0)
-        return numero;
-    int fibonacciFirst = 0;
-    int fibonacciSecond = 1;
-    for (int i = 0; i < numero - 1; i++)
-    {
-        int temporalStore = fibonacciSecond;
-        fibonacciSecond = fibonacciFirst + fibonacciSecond;
-        fibonacciFirst = temporalStore;
-    }
-
-    return fibonacciSecond;
-}
-
-Console.WriteLine("Fibonacci iterattivo");
-Console.WriteLine(Fibonacci(10));
+Console.WriteLine("Inserire la chiave");
+int key = Convert.ToInt32(Console.ReadLine());
+Console.Write("Il messaggio finale è: ");
+if (userChoise.Equals("c"))
+    Console.WriteLine(Crypting(message, key));
+else if (userChoise.Equals("d"))
+    Console.WriteLine(Decrypting(message, key));
